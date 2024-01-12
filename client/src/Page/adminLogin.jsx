@@ -9,7 +9,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import { useState, useEffect } from "react";
 
-export default function Login() {
+export default function AdminLogin() {
 	const [backendData, setBackendData] = useState([{}]);
 
 	useEffect(() => {
@@ -39,7 +39,7 @@ export default function Login() {
 
 						<h1 className="flex items-center text-2xl font-bold text-primary-ijo-kan">
 
-							LOGIN
+							ADMINISTRATOR LOGIN
 
 						</h1>
 
@@ -57,7 +57,7 @@ export default function Login() {
 
 								<Email />
 								<Password />
-								<FormControlLabel 
+                                <FormControlLabel 
                                     control={<Checkbox value="remember" color="ijokan" />}
                                     label="Remember me"
                                 />
