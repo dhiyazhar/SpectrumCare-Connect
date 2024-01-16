@@ -9,6 +9,8 @@ import {
 	getDocs,
 	updateDoc,
 	deleteDoc,
+	query,
+	where,
 } from "firebase/firestore";
 
 const app = express();
@@ -25,10 +27,30 @@ app.get("/", async (req, res) => {
 	res.send(list);
 });
 
+app.post("/control", async (req, res) => {
+	const email = req.body.email;
+	const password = req.body.password;
+	const q = query(
+		Users,
+		where("email", "==", email),
+		where("password", "==", password)
+	);
+	const list = [];
+	const data = await getDocs(q);
+	data.docs.forEach((doc) => {
+		list.push({ id: doc.id, ...doc.data()});
+	});
+	if (list.length != 0) {
+		res.send(list[0]);
+	} else {
+		res.send("not found");
+	}
+});
+
 app.post("/test", (req, res) => {
-    const data = req.body;
-    res.send({"this is your data" : data})
-})
+	const data = req.body;
+	res.send({ "this is your data": data });
+});
 
 app.post("/create", async (req, res) => {
 	const data = req.body;
