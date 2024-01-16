@@ -1,10 +1,19 @@
 import React from "react";
-import { Box } from '@mui/material';
+import {
+    Box, 
+    Button, 
+    Grid,
+    Stack
+} from '@mui/material';
+import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined';
+import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import Sidebar from '/src/components/sidebar.jsx';
 
 export default class MemberDashboard extends React.Component {
-
+    
     render () {
+
+        const { classes } = this.props;
 
         return (
 
@@ -15,18 +24,44 @@ export default class MemberDashboard extends React.Component {
                 <Sidebar />
 
                 <Box
-                    className='flex flex-row p-20 h-screen'
+                    className='p-20 h-screen w-screen'
                 >
                     <h1
-                        className='text-2xl font-bold'
+                        className='text-2xl font-bold mb-4'
                     >
                         Member
                     </h1>
 
                     <Box
-                        className='flex h-4/5 rounded-lg bg-white shadow-lg'
+                        className='flex flex-grow space-x-auto rounded-lg bg-white shadow-lg p-20 mt-5'
                     >
-                        <h1>Content</h1>
+                        
+                        <Grid container>
+
+                            <Grid>
+                                <Button 
+                                    color='ijokan'
+                                    variant="contained"
+                                    startIcon={<PersonAddAltOutlinedIcon />}
+                                >
+                                    Add Member
+                                </Button>
+                            </Grid>
+
+                            <Grid>
+
+                                <Button
+                                    variant="contained"
+                                    endIcon={<SearchOutlinedIcon />}
+                                >
+                                    Search
+                                </Button> 
+
+                            </Grid>
+
+                        </Grid>
+
+
                     </Box> 
                 </Box> 
 
